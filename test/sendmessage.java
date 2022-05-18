@@ -56,7 +56,7 @@ public class SendMessage extends HttpServlet {
                        */
                      String qry = "INSERT into UserMessages(recipient, sender, subject, msg) values ("+recipient+","+sender+","+subject+","+msg+")";
                      Statement statement = con.createStatement();
-			                  Result result = statement.executeQuery(qry);
+		     Result result = statement.executeUpdate(qry);
                      
                      response.sendRedirect(request.getContextPath()+"/vulnerability/SendMessage.jsp?status=<b style='color:green'>* Message successfully sent *</b>");
                                     
