@@ -18,11 +18,12 @@ public class Vulns {
 
 			String email = request.getParameter ("email");
 			String password = request.getParameter ("password");
-
+			Connection connection = pool.getConnection();
+			String sql = "";
 			
 			// clean sqli
 			/*
-			String sql = "select * from users where email = ? and password = ? ";
+			sql = "select * from users where email = ? and password = ? ";
 			PreparedStatement ps = connection.prepareStatement(sql);
 			ps.setString(1, email);
 			ps.setString(2, password);
@@ -30,18 +31,18 @@ public class Vulns {
 			*/
 						
 			// vulnerable sqli
-			String sql = "select * from users where (email ='" + email + "' and password'" + password + "')";
-			Connection connection = pool.getConnection();
+			sql = "select * from users where (email = '" + email + "' and password = '" + password + "')";
 			Statement statement = connection.createStatement();
 			result = statement.executeQuery(sql);
 			
 			
-			if (result.next()) {
+			while (result.next()) {
 				loggedIn = true;
 				doGet(result,req,response);
 			} else {
 				out.println("No results");
-			}
+			do }
+		
 		}
 		catch()
 		{
