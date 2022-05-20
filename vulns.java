@@ -20,21 +20,21 @@ public class Vulns {
 			String password = request.getParameter ("password");
 
 			
-			
-			
+			// clean sqli
+			/*
 			String sql = "select * from users where email = ? and password = ? ";
 			PreparedStatement ps = connection.prepareStatement(sql);
 			ps.setString(1, email);
 			ps.setString(2, password);
 			result = ps.executeQuery();
-			
-			
-			/*
+			*/
+						
+			// vulnerable sqli
 			String sql = "select * from users where (email ='" + email + "' and password'" + password + "')";
 			Connection connection = pool.getConnection();
 			Statement statement = connection.createStatement();
 			result = statement.executeQuery(sql);
-			*/
+			
 			
 			if (result.next()) {
 				loggedIn = true;
@@ -59,8 +59,14 @@ public class Vulns {
   			PrintWriter out = response.getWriter();
   			String loc = request.getParameter("location");
 			loc+=res.getString("GEO_LOC");
+			// clean xss
+			/*
  			String escapedLocation = HtmlEscapers.htmlEscaper().escape(loc); 
   			out.println("<h1> Location: " + escapedLocation + "<h1>");
+			*/
+
+			//not clean xss
+			out.println("<h1> Location: " + loc + "<h1>");
 		}
 		catch()	{
 			out.println("Error caught by overly broad exception handler");
