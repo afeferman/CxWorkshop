@@ -21,6 +21,12 @@ public class Vulns {
 			Connection connection = pool.getConnection();
 			String sql = "";
 			
+		
+			// vulnerable sqli
+			sql = "select * from users where (email = '" + email + "' and password = '" + password + "')";
+			Statement statement = connection.createStatement();
+			result = statement.executeQuery(sql);
+		
 			// clean sqli
 			/*
 			sql = "select * from users where email = ? and password = ? ";
@@ -29,12 +35,6 @@ public class Vulns {
 			ps.setString(2, password);
 			result = ps.executeQuery();
 			*/
-						
-			// vulnerable sqli
-			sql = "select * from users where (email = '" + email + "' and password = '" + password + "')";
-			Statement statement = connection.createStatement();
-			result = statement.executeQuery(sql);
-			
 			
 			if (result.next()) {
 				loggedIn = true;
