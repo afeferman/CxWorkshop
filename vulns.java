@@ -36,17 +36,16 @@ public class Vulns {
 			result = statement.executeQuery(sql);
 			
 			
-			while (result.next()) {
+			if (result.next()) {
 				loggedIn = true;
 				doGet(result,req,response);
-			} else {
+			} else
 				out.println("No results");
-			do }
 		
 		}
-		catch()
+		catch(Exception ex)
 		{
-			out.println("Overly broad Exception");
+			out.println("Overly broad Exception " + ex.Message());
 		}
 	}
 
