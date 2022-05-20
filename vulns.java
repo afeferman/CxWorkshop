@@ -42,7 +42,7 @@ public class Vulns {
 			} else {
 				out.println("No results");
 			do }
-		
+			
 		}
 		catch()
 		{
