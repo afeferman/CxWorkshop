@@ -69,7 +69,7 @@ public class Vulns {
 			//not clean xss
 			out.println("<h1> Location: " + loc + "<h1>");
 		}
-		catch(SQLException ex)	{
+		catch(IOException ex)	{
 			out.println("Error caught by overly broad exception handler: " + ex.Message());
 		}
 	}
