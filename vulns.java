@@ -43,7 +43,7 @@ public class Vulns {
 				out.println("No results");
 		
 		}
-		catch(RuntimeException ex)
+		catch(SQLException ex)
 		{
 			out.println("Overly broad Exception " + ex.Message());
 		}
@@ -69,7 +69,7 @@ public class Vulns {
 			//not clean xss
 			out.println("<h1> Location: " + loc + "<h1>");
 		}
-		catch(RuntimeException ex)	{
+		catch(SQLException ex)	{
 			out.println("Error caught by overly broad exception handler: " + ex.Message());
 		}
 	}
