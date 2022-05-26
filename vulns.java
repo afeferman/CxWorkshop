@@ -43,8 +43,7 @@ public class Vulns {
 				out.println("No results");
 		
 		}
-		catch(SQLException ex)
-		{
+		catch(SQLException ex)	{
 			out.println("Overly broad Exception " + ex.Message());
 		}
 	}
